@@ -1,6 +1,6 @@
 import Movie from "../models/movieModel.js";
 
-// CREATE: Add a new movie
+
 export const createMovie = async (req, res) => {
     const newMovie = new Movie(req.body);
     try {
@@ -11,7 +11,7 @@ export const createMovie = async (req, res) => {
     }
 };
 
-// READ: Get all movies
+
 export const getMovies = async (req, res) => {
     try {
         const movies = await Movie.find();
@@ -21,7 +21,7 @@ export const getMovies = async (req, res) => {
     }
 };
 
-// READ: Get a single movie by ID
+
 export const getMovieById = async (req, res) => {
     try {
         const movie = await Movie.findById(req.params.id);
@@ -32,7 +32,7 @@ export const getMovieById = async (req, res) => {
     }
 };
 
-// UPDATE: Edit a movie
+
 export const updateMovie = async (req, res) => {
     try {
         const updatedMovie = await Movie.findByIdAndUpdate(
@@ -46,7 +46,7 @@ export const updateMovie = async (req, res) => {
     }
 };
 
-// DELETE: Remove a movie
+
 export const deleteMovie = async (req, res) => {
     try {
         await Movie.findByIdAndDelete(req.params.id);

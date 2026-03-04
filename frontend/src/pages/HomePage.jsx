@@ -74,7 +74,6 @@ const AddMovie = ({ fetchMovies }) => {
 
     return (
         <>
-            {/* PREMIUM TRIGGER BUTTON */}
             <button
                 className="btn btn-primary h-11 px-6 rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-sm transition-all border-none flex items-center gap-2"
                 onClick={() => document.getElementById('add_movie_modal').showModal()}
@@ -85,7 +84,6 @@ const AddMovie = ({ fetchMovies }) => {
             <dialog id="add_movie_modal" className="modal">
                 <div className="modal-box w-11/12 max-w-xl bg-base-200 border border-base-content/5 rounded-2xl p-8 shadow-2xl">
 
-                    {/* HEADER SECTION */}
                     <div className="flex flex-col items-center mb-10 text-center">
                         <div className="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-4 border border-primary/20">
                             <Film className="text-primary" size={24} />
@@ -100,7 +98,6 @@ const AddMovie = ({ fetchMovies }) => {
 
                     <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-                        {/* Title - Full Width */}
                         <div className="form-control md:col-span-2">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">
                                 Title
@@ -115,7 +112,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Type */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Media Type</label>
                             <select
@@ -128,7 +124,6 @@ const AddMovie = ({ fetchMovies }) => {
                             </select>
                         </div>
 
-                        {/* Rating */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Rating</label>
                             <input
@@ -143,7 +138,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Genres - Full Width */}
                         <div className="form-control md:col-span-2">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Genres (Comma separated)</label>
                             <input
@@ -156,7 +150,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Status */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Watch Status</label>
                             <select
@@ -170,7 +163,6 @@ const AddMovie = ({ fetchMovies }) => {
                             </select>
                         </div>
 
-                        {/* Platform */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Platform</label>
                             <input
@@ -182,7 +174,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Release Year */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Release Year</label>
                             <input
@@ -194,7 +185,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Poster URL */}
                         <div className="form-control">
                             <label className="label text-[10px] font-bold text-base-content/40 uppercase tracking-widest ml-1">Poster URL</label>
                             <input
@@ -206,7 +196,6 @@ const AddMovie = ({ fetchMovies }) => {
                             />
                         </div>
 
-                        {/* Favorite Toggle - Full Width */}
                         <div className="form-control md:col-span-2 bg-base-300/50 p-4 rounded-xl border border-base-content/5 group">
                             <label className="label cursor-pointer justify-between p-0">
                                 <span className="text-[10px] font-bold text-base-content/40 uppercase tracking-widest group-hover:text-base-content transition-colors flex items-center gap-2">
@@ -221,7 +210,6 @@ const AddMovie = ({ fetchMovies }) => {
                             </label>
                         </div>
 
-                        {/* ACTIONS */}
                         <div className="md:col-span-2 flex items-center gap-4 mt-8 pt-8 border-t border-base-content/5">
                             <button
                                 type="submit"
@@ -296,7 +284,6 @@ const HomePage = () => {
             <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
             <div className="container mx-auto p-4 md:p-8 max-w-[1400px] flex-grow">
-                {/* Header Section - Tightened padding */}
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-base-content/10 pb-6">
                     <div className="flex items-center gap-4">
                         <div className="bg-primary/10 p-3 rounded-lg border border-primary/20">
@@ -314,9 +301,7 @@ const HomePage = () => {
                     </div>
                 </div>
 
-                {/* Filters Section - Improved typography and button sizing */}
                 <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center gap-4 mb-10">
-                    {/* Status Capsule - Fixed Font Size and Padding */}
                     <div className="flex items-center gap-1 bg-base-200 p-1 rounded-xl border border-base-content/5 overflow-x-auto no-scrollbar">
                         {['All', 'Plan to Watch', 'Watching', 'Completed'].map((status) => (
                             <button
@@ -333,7 +318,6 @@ const HomePage = () => {
                         ))}
                     </div>
 
-                    {/* Secondary Actions */}
                     <div className="flex flex-wrap items-center gap-3 w-full xl:w-auto">
                         <button
                             onClick={() => setShowFavoritesOnly(!showFavoritesOnly)}
@@ -371,12 +355,10 @@ const HomePage = () => {
                             )}
                         </div>
 
-                        {/* This component likely contains its own styling, ensure it matches h-[46px] */}
                         <AddMovie fetchMovies={fetchMovies} />
                     </div>
                 </div>
 
-                {/* Content Area */}
                 {isLoading ? (
                     <div className="flex justify-center items-center py-32">
                         <span className="loading loading-spinner loading-lg text-primary"></span>

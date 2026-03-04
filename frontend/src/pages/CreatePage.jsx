@@ -17,7 +17,6 @@ const CreatePage = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        // genre must be an array according to the backend schema
         const genreArray = genre.split(',').map(g => g.trim()).filter(Boolean);
 
         try {

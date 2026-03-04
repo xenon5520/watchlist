@@ -8,7 +8,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
     const [searchHistory, setSearchHistory] = useState([]);
     const [isHistoryOpen, setIsHistoryOpen] = useState(false);
 
-    // --- NEW SESSION TIMER STATE ---
+    
     const [sessionTime, setSessionTime] = useState("00:00");
     const startTimeRef = useRef(Date.now());
 
@@ -20,7 +20,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
 
     const [isVisible, setIsVisible] = useState(true);
 
-    // --- MOUSE HANDLERS FOR AUTO-HIDE ---
+    
     const handleMouseEnter = () => {
         isHoveredRef.current = true;
         if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
@@ -28,14 +28,14 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
 
     const handleMouseLeave = () => {
         isHoveredRef.current = false;
-        // Only start timer if we are in floating mode (scrolled down)
+        
         if (window.scrollY > 50) {
             if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
             hideTimeoutRef.current = setTimeout(() => {
                 if (window.scrollY > 50 && !isHoveredRef.current) {
                     setIsVisible(false);
                 }
-            }, 2500); // 2.5s inactivity
+            }, 2500); 
         }
     };
 
@@ -46,7 +46,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
         const savedHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
         setSearchHistory(savedHistory);
 
-        // --- SESSION TIMER LOGIC ---
+        
         const timerInterval = setInterval(() => {
             const secondsElapsed = Math.floor((Date.now() - startTimeRef.current) / 1000);
             const mins = Math.floor(secondsElapsed / 60).toString().padStart(2, '0');
@@ -57,20 +57,20 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Determine visibility direction
+            
             if (currentScrollY < 50) {
-                // At top: Always show and clear timer
+                
                 setIsVisible(true);
                 if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
             } else if (currentScrollY > lastScrollY.current) {
-                // Scrolling DOWN -> Hide immediately
+                
                 setIsVisible(false);
                 if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
             } else {
-                // Scrolling UP -> Show
+                
                 setIsVisible(true);
 
-                // Start inactivity timer
+                
                 if (hideTimeoutRef.current) clearTimeout(hideTimeoutRef.current);
                 hideTimeoutRef.current = setTimeout(() => {
                     if (window.scrollY > 50 && !isHoveredRef.current) {
@@ -102,7 +102,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
         window.addEventListener('keydown', handleKeyDown);
 
         return () => {
-            clearInterval(timerInterval); // Cleanup timer
+            clearInterval(timerInterval); 
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('mousedown', handleClickOutside);
             window.removeEventListener('keydown', handleKeyDown);
@@ -138,7 +138,6 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
 
             <div className="relative z-10 max-w-[1800px] mx-auto px-4 sm:px-6 md:px-16 flex flex-col md:grid md:grid-cols-3 items-center gap-4 md:gap-0">
 
-                {/* LEFT COLUMN: LOGO */}
                 <div className="flex items-center gap-4 group cursor-pointer justify-self-center md:justify-self-start">
                     <div className="relative">
                         <div className="relative bg-primary p-2 rounded-xl">
@@ -152,7 +151,6 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
                     </div>
                 </div>
 
-                {/* CENTER COLUMN: SEARCH & HISTORY */}
                 <div className="justify-self-center relative w-full flex justify-center" ref={historyRef}>
                     <div className="relative group hidden xl:block">
                         <div className="relative flex items-center">
@@ -170,7 +168,6 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
                         </div>
                     </div>
 
-                    {/* SEARCH HISTORY DROPDOWN */}
                     {isHistoryOpen && searchHistory.length > 0 && (
                         <div className="absolute top-14 left-1/2 -translate-x-1/2 w-full max-w-[500px] bg-base-200 border border-base-content/10 rounded-xl p-3 shadow-xl z-[110]">
                             <div className="flex items-center justify-between mb-3 px-2">
@@ -200,9 +197,7 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
                     )}
                 </div>
 
-                {/* RIGHT COLUMN: ACTIONS - OMITTED AS REQUESTED */}
                 <div className="flex items-center justify-end justify-self-end w-full md:w-auto">
-                    {/* Add any other small navigation items here if needed in future */}
                 </div>
             </div>
         </div>

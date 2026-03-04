@@ -213,16 +213,13 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                 className="card bg-base-200 border border-base-content/5 shadow-md overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 group"
             >
 
-                {/* POSTER SECTION - STATIC PERFECT FIT */}
                 <figure className="relative h-[28rem] w-full overflow-hidden bg-base-300">
-                    {/* Blurred Background Layer (Always Active) */}
                     <img
                         src={movie.posterUrl || fallbackImage}
                         alt=""
                         className="absolute inset-0 h-full w-full object-cover blur-2xl opacity-30 scale-110"
                     />
 
-                    {/* Main Poster Image - Static Contain */}
                     <div className="absolute inset-0 flex items-center justify-center p-4">
                         <img
                             src={movie.posterUrl || fallbackImage}
@@ -232,10 +229,8 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                         />
                     </div>
 
-                    {/* VIGNETTE OVERLAY FOR DEPTH */}
                     <div className="absolute inset-0 bg-gradient-to-t from-base-200/80 via-transparent to-transparent opacity-60 pointer-events-none z-10" />
 
-                    {/* STATUS PILL */}
                     <div className="absolute top-4 left-4 z-20">
                         <div className={`badge badge-sm py-3 px-4 font-bold uppercase tracking-wider border-none shadow-sm ${movie.watchStatus === 'Completed' ? 'badge-success' :
                             movie.watchStatus === 'Watching' ? 'badge-warning' : 'bg-base-100'
@@ -244,7 +239,6 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                         </div>
                     </div>
 
-                    {/* FAVORITE STAR */}
                     <button
                         onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggleFavorite(movie._id, movie.isFavorite); }}
                         className={`absolute top-4 right-4 z-20 btn btn-circle btn-xs border-none transition-all ${movie.isFavorite
@@ -256,10 +250,8 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                     </button>
                 </figure>
 
-                {/* CONTENT BODY */}
                 <div className="p-6 bg-base-200">
 
-                    {/* TITLE & META */}
                     <div className="mb-4">
                         <h2 className="text-xl font-bold text-base-content leading-tight mb-2 uppercase line-clamp-1">
                             {movie.title}
@@ -297,7 +289,6 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                         </div>
                     </div>
 
-                    {/* TIMESTAMPS */}
                     <div className="flex flex-col gap-1 px-1 opacity-40 text-[9px] font-bold uppercase tracking-tight">
                         <div className="flex justify-between border-b border-base-content/5 pb-1">
                             <span>CREATED</span>
@@ -309,7 +300,6 @@ const MovieCard = ({ movie, setMovies, fetchMovies }) => {
                         </div>
                     </div>
 
-                    {/* ACTION BAR */}
                     <div className="flex justify-between items-center mt-4 pt-4 border-t border-base-content/5">
                         <EditMovie
                             movie={movie}
